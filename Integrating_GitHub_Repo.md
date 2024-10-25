@@ -73,5 +73,5 @@ In this lab, you will learn how to integrate a GitHub repository into a Jenkins 
 1. **Check Build Status**
    - Go to the Jenkins project page and click on `Build History` to see the status of your triggered builds.
    - You should see a new build triggered by the webhook when you pushed to the GitHub repository.
-//test01
+//test02
 ---
