@@ -337,4 +337,5 @@ cat token.txt
 =====================
 
 
-http://3.92.128.223:30309/
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath={.data.password} | base64 -d
+
