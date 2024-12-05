@@ -23,7 +23,7 @@
 1. Scroll to the **Build** section.
 2. Click **Add build step** and select **Invoke top-level Maven targets**.
 3. Configure the Maven build:
-   - Enter `clean install` in the **Goals** field.
+   - Enter `-B -DskipTests clean package` in the **Goals** field.
    - Ensure the correct Maven installation is selected under **Maven Version**.
 
 ### 4. Configure Post-Build Actions: Email Notifications
