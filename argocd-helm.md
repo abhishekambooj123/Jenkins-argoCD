@@ -3,7 +3,7 @@
 ### create a file test-helm.yaml
 
 ```
-vi test-helm
+vi test-helm.yaml
 ```
 
 ```
