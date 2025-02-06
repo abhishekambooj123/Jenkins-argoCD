@@ -1,0 +1,83 @@
+### Step-by-Step Lab to Create an EC2 Instance and Configure it as a Jenkins Agent with the `test` Label
+
+#### **Part 1: Create an EC2 Instance**
+
+1. **Login to AWS Console**:
+   - Go to the [AWS Management Console](https://aws.amazon.com/console/).
+   - Navigate to the **EC2 Dashboard**.
+
+2. **Launch a New Instance**:
+   - Click **Launch Instances**.
+   - Set the instance name as **Jenkins-Agent-Test**.
+
+3. **Choose Amazon Machine Image (AMI)**:
+   - Select **Ubuntu Server 24.04 LTS (HVM), SSD Volume Type**.
+
+4. **Select Instance Type**:
+   - Choose an instance type (e.g., `t2.micro` for testing or `t2.medium` for better performance).
+
+5. **Configure Instance Settings**:
+   - Keep the default settings for network.
+   - Assign a public IP address.
+
+6. **Add Storage**:
+   - Modify the storage to **8 GiB**.
+
+7. **Configure Security Group**:
+   - Create a new security group with the name `jenkins-agent-sg`.
+   - Add inbound rules to open **all ports** temporarily:
+     - **Type**: All Traffic
+     - **Protocol**: All
+     - **Port Range**: 0-65535
+     - **Source**: Anywhere (0.0.0.0/0, ::/0)
+
+8. **Launch the Instance**:
+   - Select an existing key pair or create a new one to SSH into the instance.
+   - Launch the instance.
+
+---
+
+#### **Part 2: Configure the EC2 Instance**
+
+1. **Connect to the EC2 Instance**:
+   - SSH into the instance:
+     ```bash
+     ssh -i <your-key.pem> ubuntu@<instance-public-ip>
+     ```
+
+2. **Update the System**:
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   ```
+
+3. **Install Java (Required for Jenkins Agent)**:
+   ```bash
+   sudo apt install -y openjdk-11-jdk
+   java -version
+   ```
+
+
+#### **Part 3: Configure Jenkins Master**
+
+1. **Access Jenkins Dashboard**:
+   - Login to your Jenkins server at `http://<jenkins-master-ip>:8080`.
+
+2. **Add a New Node**:
+   - Go to **Manage Jenkins** > **Manage Nodes and Clouds**.
+   - Click **New Node**.
+
+3. **Define the Node**:
+   - Name: `test`
+   - Select **Permanent Agent**.
+   - Click **OK**.
+
+4. **Configure Node Details**:
+   - **Remote root directory**: `/home/jenkins`
+   - **Labels**: `test`
+
+5. **Save and Connect**:
+   - Save the node configuration.
+   - Jenkins will show the node is not sych click on nodes and copy the command and paste it on Master so that it will get connected to master as a slave.
+
+
+
