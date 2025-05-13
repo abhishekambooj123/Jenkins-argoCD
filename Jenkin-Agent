@@ -79,5 +79,7 @@
    - Save the node configuration.
    - Jenkins will show the node is not sych click on nodes and copy the command and paste it on Master so that it will get connected to master as a slave.
 
+---
+
 
 
